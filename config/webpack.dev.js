@@ -26,6 +26,40 @@ module.exports = {
 						loader: 'css-loader'
 					}
 				]
+			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]'
+						}
+					},
+					{
+						loader: 'extract-loader',
+						options: {
+							publicPath: '../'
+						}
+					},
+					{
+						loader: 'html-loader',
+						options: {
+							attrs: ['img:src']
+						}
+					}
+				]
+			},
+			{
+				test: /\.(jpg|png|gif|bmp)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'images/[name]-[hash:8].[ext]'
+						}
+					}
+				]
 			}
 		]
 	}
